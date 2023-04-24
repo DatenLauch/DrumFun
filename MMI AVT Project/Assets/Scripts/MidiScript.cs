@@ -5,6 +5,11 @@ using UnityEngine.InputSystem;
 
 public class MidiScript : MonoBehaviour
 {
+    // midi note number of lowest key in your midi device    
+    //offset of 36 is used because lowest possible note starts at 36 (bass pedal with C2)
+    int keyOffset = 36;
+    [SerializeField] GameObject barManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +30,8 @@ public class MidiScript : MonoBehaviour
                     (note.device as Minis.MidiDevice)?.channel,
                     note.device.description.product
                 ));
+
+                barManager.GetComponent<BarScript>().onNoteOn(note.noteNumber - keyOffset, velocity);
             };
 
             midiDevice.onWillNoteOff += (note) => {
@@ -35,6 +42,8 @@ public class MidiScript : MonoBehaviour
                     (note.device as Minis.MidiDevice)?.channel,
                     note.device.description.product
                 ));
+
+                barManager.GetComponent<BarScript>().onNoteOff(note.noteNumber - keyOffset);
             };
         };
     }

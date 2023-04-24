@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class BarScript : MonoBehaviour
 {
-    // to-do: change keycount to number of hittable drum elements
-    const int keysCount = 88;
+    // eventhough there are only 10 notes on our drums set, the keysCount is set to 16 because
+    // the lowest sound is the pass pedal (C2) which is the equivalent of 36 MIDI
+    // and the highest sound is the ride (D#3) at 51 MIDI range, therefore the range covers 16 Units.
+    const int keysCount = 16;
+
     [SerializeField] GameObject barManager;
     GameObject[] barsPressed = new GameObject[keysCount]; // bars linked to the pressed key
     [SerializeField] List<GameObject> barsReleased = new List<GameObject>(); // bars linked to the released key
