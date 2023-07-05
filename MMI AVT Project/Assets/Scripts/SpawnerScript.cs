@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour
 {
-
     public GameObject Note; // This is the prefab for the object you want to spawn
     public float speed = 10f; // This is the speed at which the object will move
 
@@ -25,7 +24,6 @@ public class SpawnerScript : MonoBehaviour
         rb.velocity = transform.forward * speed;
     }
 
-    int currentFrame = Time.frameCount;
     // Update is called once per frame
     void Update()
     {
