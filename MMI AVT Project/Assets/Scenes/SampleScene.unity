@@ -331,6 +331,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   note: {fileID: 0}
+  checkHitBox: 0
+  colliderObject: {fileID: 0}
 --- !u!1 &193955639
 GameObject:
   m_ObjectHideFlags: 0
