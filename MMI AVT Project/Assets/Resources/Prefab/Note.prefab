@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5813032581507330092}
   m_Layer: 0
   m_Name: Note
-  m_TagString: Untagged
+  m_TagString: NoteMid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b1eb22f203ab3994c855510339d0ca53, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
