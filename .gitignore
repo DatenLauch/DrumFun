@@ -17,10 +17,10 @@
 /MMI AVT Project/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /MMI AVT Project/[Aa]ssets/[Ss]treamingAssets/aa/*
 /MMI AVT Project/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
-/MMI AVT Project/[Aa]ssets/[Rr]esources/[Mm]odels/*.meta
+
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
-!/MMI AVT Project/[Aa]ssets/**/*.meta
+/MMI AVT Project/[Aa]ssets/**/*.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 /MMI AVT Project/[Aa]ssets/AssetStoreTools*
