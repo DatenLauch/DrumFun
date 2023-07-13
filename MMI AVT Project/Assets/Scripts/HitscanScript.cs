@@ -16,13 +16,17 @@ public class HitscanScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && colliderObject != null)
+        if (!PauseMenu.isPaused)
         {
-            Debug.Log("Success!");
-            Destroy(colliderObject.gameObject);
-            colliderObject = null;
-            scoreSystem.addSuccessfulHit(100);
+            if (Input.GetKeyDown(KeyCode.Space) && colliderObject != null)
+            {
+                Debug.Log("Success!");
+                Destroy(colliderObject.gameObject);
+                colliderObject = null;
+                scoreSystem.addSuccessfulHit(100);
+            }
         }
+       
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -32,8 +36,12 @@ public class HitscanScript : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        Debug.Log("Missed a note!");
-        colliderObject = null;
-        scoreSystem.resetCombo();
+        if (!PauseMenu.isPaused)
+        {
+            Debug.Log("Missed a note!");
+            colliderObject = null;
+            scoreSystem.resetCombo();
+        }
+
     }
 }
