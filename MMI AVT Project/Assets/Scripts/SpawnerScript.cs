@@ -27,9 +27,13 @@ public class SpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.frameCount % 60 == 0)
+        if (!PauseMenu.isPaused)
         {
-            SpawnObject();
+            if (Time.frameCount % 60 == 0)
+            {
+                SpawnObject();
+            }
         }
+       
     }
 }
