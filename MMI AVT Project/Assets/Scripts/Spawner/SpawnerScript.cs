@@ -26,10 +26,12 @@ public class SpawnerScript : MonoBehaviour
         // Get the rigidbody component of the new object
         Rigidbody rbMid = midNote.GetComponent<Rigidbody>();
         Rigidbody rbLeft = leftNote.GetComponent<Rigidbody>();
+        Rigidbody rbRight = rightNote.GetComponent<Rigidbody>();
 
         // Set the velocity of the rigidbody to make the object move in a single direction
         rbMid.velocity = transform.forward * speed;
         rbLeft.velocity = transform.forward * speed;
+        rbRight.velocity = transform.forward * speed;
     }
 
     // Update is called once per frame
@@ -40,6 +42,7 @@ public class SpawnerScript : MonoBehaviour
             if (Time.frameCount % 60 == 0)
             {
                 SpawnObject();
+                Debug.Log(Note.transform.position);
             }
         }
        
