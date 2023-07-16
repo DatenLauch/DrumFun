@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitscanScript : MonoBehaviour
+public class LeftHitscanScript : MonoBehaviour
 {
 
     [SerializeField]
@@ -16,12 +16,11 @@ public class HitscanScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("uppies!");
         if (!PauseMenu.isPaused)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha2) && colliderObject != null)
+            if (Input.GetKeyDown(KeyCode.Alpha1) && colliderObject != null)
             {
-                Debug.Log("Success!");
+                //Debug.Log("Success!");
                 Destroy(colliderObject.gameObject);
                 colliderObject = null;
                 scoreSystem.addSuccessfulHit(100);
