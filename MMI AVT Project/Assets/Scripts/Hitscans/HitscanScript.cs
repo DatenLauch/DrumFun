@@ -16,12 +16,12 @@ public class HitscanScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("uppies!");
+        //Debug.Log("uppies!");
         if (!PauseMenu.isPaused)
         {
             if (Input.GetKeyDown(KeyCode.Alpha2) && colliderObject != null)
             {
-                Debug.Log("Success!");
+                //Debug.Log("Success!");
                 Destroy(colliderObject.gameObject);
                 colliderObject = null;
                 scoreSystem.addSuccessfulHit(100);

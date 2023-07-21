@@ -20,7 +20,7 @@ public class RightHitscanScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha3) && colliderObject != null)
             {
-                Debug.Log("3!");
+                //Debug.Log("3!");
                 Destroy(colliderObject.gameObject);
                 colliderObject = null;
                 scoreSystem.addSuccessfulHit(100);
