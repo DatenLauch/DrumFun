@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
-
+using UnityEngine.SceneManagement;
 public class ScoreScript : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText;
@@ -14,15 +14,24 @@ public class ScoreScript : MonoBehaviour
     private int hits;
     private double accuracy;
 
+
+
     void Start()
     {
-
     }
 
     void Update()
     {
-
+        // when 500 or more points is reached, the game will be over. We can change this then accordingly,
+        //e.g. game over when song is ended. Will change this later
+        if(score > 800)
+        {
+            PlayerPrefs.SetInt("Score", ((int)score));
+            SceneManager.LoadScene("EndScreen");
+        }
+     
     }
+
 
     void updateScoreText()
     {
