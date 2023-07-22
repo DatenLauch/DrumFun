@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MidiScript : MonoBehaviour
+public class MidiInputScript : MonoBehaviour
 {
     // midi note number of lowest key in your midi device    
     //offset of 36 is used because lowest possible note starts at 36 (bass pedal with C2)

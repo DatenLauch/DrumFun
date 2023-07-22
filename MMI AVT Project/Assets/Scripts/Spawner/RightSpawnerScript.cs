@@ -17,7 +17,7 @@ public class RightSpawnerScript : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-    void SpawnObject()
+    public void SpawnObject()
     {
         
 
@@ -46,7 +46,7 @@ public class RightSpawnerScript : MonoBehaviour
         {
             if (Time.frameCount % 60 == 0)
             {
-                SpawnObject();
+               // SpawnObject();
                // Debug.Log(midNote.transform.position);
             }
         }
