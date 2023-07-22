@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LeftSpawnerScript : MonoBehaviour
 {
-    public GameObject LeftNote; // This is the prefab for the object you want to spawn
-    public float speed = 10f; // This is the speed at which the object will move
+    public GameObject LeftNote; 
+    public float speed = 10f; 
 
     private void Start()
     {

@@ -41,7 +41,7 @@ public class SpawnerScript : MonoBehaviour
             currentAudioTime = getAudioSourceTime(musicSource);
             if (currentAudioTime != 0)
             {
-                if (currentAudioTime >= timeStamps[spawnIndex])
+                if ((currentAudioTime) >= timeStamps[spawnIndex])
                 {
                     if (notesArray[spawnIndex].ToString().Equals("D2"))
                     {
