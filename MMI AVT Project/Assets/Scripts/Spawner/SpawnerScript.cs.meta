@@ -3,7 +3,14 @@ guid: c9dd2bb6fefe1404882bba6683b1681e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - musicSource: {instanceID: 0}
+  - midNote: {fileID: 5067411959871769073, guid: 4c84acc4333fee84ba45acbd88612dec,
+      type: 3}
+  - leftNote: {fileID: 5067411959871769073, guid: fc9cbee909721754683b6e1171234070,
+      type: 3}
+  - rightNote: {fileID: 5067411959871769073, guid: 0b608aa0854e22a49abf63363338d87b,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
