@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering;
+
 public class SoundManager : MonoBehaviour
 {
     public Slider masterVolumeSlider;
@@ -24,7 +26,7 @@ public class SoundManager : MonoBehaviour
     public void changeMasterVolume()
     {
         AudioListener.volume = masterVolumeSlider.value;
-        masterVolumePercentageText.text = (masterVolumeSlider.value).ToString() + "%";
+        masterVolumePercentageText.text = ((int)(masterVolumeSlider.value * 100)).ToString() + "%";
         Save();
     }
 
