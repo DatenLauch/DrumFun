@@ -22,9 +22,6 @@ public class SpawnerScript : MonoBehaviour
     public GameObject midNote;
     public GameObject leftNote;
     public GameObject rightNote;
-
-   // GameObject MidSpawner;
-
     Note[] notesArray;
 
     void Start()
@@ -50,25 +47,21 @@ public class SpawnerScript : MonoBehaviour
                 {
                     if (notesArray[spawnIndex].ToString().Equals("D2"))
                     {
-                        //leftSpawner.SpawnObject();
                         spawnOjects(new Vector3(1.5f, 0.5f, -18f), leftNote);
-                        Debug.Log("D2");
+                        //Debug.Log("D2");
                     }
 
                     if (notesArray[spawnIndex].ToString().Equals("C2"))
                     {
                         spawnOjects(new Vector3(0, 0.5f, -18f), midNote);
-                        //midSpawner.SpawnObject();
-                        Debug.Log("C2");
+                        //Debug.Log("C2");
                     }
                     if (notesArray[spawnIndex].ToString().Equals("F#2"))
                     {
                         spawnOjects(new Vector3(-1.5f, 0.5f, -18f), rightNote);
-                        //rightSpawner.SpawnObject();
-                        Debug.Log("F#2");
+                        //Debug.Log("F#2");
                     }
                     spawnIndex++;
-                    Debug.Log(notesArray[spawnIndex - 1]);
                 }
             }
         }

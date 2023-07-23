@@ -18,7 +18,6 @@ public class RightAnimationOnButtonPress : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                Debug.Log("Blue!");
                 drumAnimator.Play("hitAnimation", -1, 0f);
             }
         }

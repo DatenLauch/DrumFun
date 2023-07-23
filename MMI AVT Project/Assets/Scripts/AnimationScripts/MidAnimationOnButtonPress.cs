@@ -18,7 +18,6 @@ public class MidAnimationOnButtonPress : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                Debug.Log("Blue!");
                 drumAnimator.Play("hitAnimation", -1, 0f);
             }
         }
