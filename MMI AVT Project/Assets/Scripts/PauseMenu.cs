@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     { 
         pauseMenu.SetActive(false);
-    
+      
 
     }
 
@@ -60,8 +60,7 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartGame()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        SceneManager.LoadScene("DrumFunMain");
         ResumeGame();
     }
 }

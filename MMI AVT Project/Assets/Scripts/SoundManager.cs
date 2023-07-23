@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] Slider masterVolumeSlider;
+    public Slider masterVolumeSlider;
     public TextMeshProUGUI masterVolumePercentageText;
     void Start()
     {

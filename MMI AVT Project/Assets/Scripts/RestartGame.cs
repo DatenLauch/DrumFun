@@ -25,7 +25,7 @@ public class RestartGame : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("DrumFunMain");
     }
 
     public void QuitGame()
