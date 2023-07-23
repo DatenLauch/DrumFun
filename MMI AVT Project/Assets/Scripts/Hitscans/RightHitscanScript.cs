@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class RightHitscanScript : MonoBehaviour
 {
-
-    [SerializeField]
-    private ScoreScript scoreSystem;
+    [SerializeField] ScoreScript scoreSystem;
+    [SerializeField] HitsplashScript Hitsplash;
     private Collider colliderObject;
+    private float startPositionPerfect = 11.85f;
+    private float endPositionPerfect = 12.15f;
 
     void Start()
     {
@@ -20,13 +21,25 @@ public class RightHitscanScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha3) && colliderObject != null)
             {
-                //Debug.Log("3!");
-                Destroy(colliderObject.gameObject);
-                colliderObject = null;
-                scoreSystem.addSuccessfulHit(100);
+                if (colliderObject.transform.position.z >= startPositionPerfect && colliderObject.transform.position.z <= endPositionPerfect)
+                {
+                    Debug.Log("Perfect!");
+                    scoreSystem.addSuccessfulHit(300);
+                    Hitsplash.activateHitsplash("PERFECT!\n+300");
+                    Destroy(colliderObject.gameObject);
+                    colliderObject = null;
+                }
+
+                else
+                {
+                    Debug.Log("Good");
+                    scoreSystem.addSuccessfulHit(100);
+                    Hitsplash.activateHitsplash("OKAY!\n+100");
+                    Destroy(colliderObject.gameObject);
+                    colliderObject = null;
+                }
             }
-        }
-       
+        }    
     }
 
     private void OnTriggerEnter(Collider collision)

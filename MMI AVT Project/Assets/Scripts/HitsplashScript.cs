@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HitsplashScript : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI text;
-    
+    [SerializeField] TextMeshProUGUI textUI;
+    [SerializeField] float duration;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,27 +14,18 @@ public class HitsplashScript : MonoBehaviour
 
     public void activateHitsplash(string textToDisplay)
     {
+        textUI.text = "";
         StopCoroutine(coroutineHitsplash(textToDisplay));
-        StartCoroutine(coroutineHitsplash(textToDisplay));    
-    }
-
-    void showText()
-    {
-        Debug.Log("show");
-        text.enabled = true;
-    }
-
-    void hideText()
-    {
-        Debug.Log("hide");
-        text.enabled = false;
+        StartCoroutine(coroutineHitsplash(textToDisplay));
     }
 
     IEnumerator coroutineHitsplash(string textToDisplay)
     {
-        text.text = textToDisplay;
-        yield return new WaitForSeconds(5f);
-        text.text = "";
+        textUI.text = textToDisplay;
+        //text.CrossFadeAlpha(1f, 0f, false);
+        //text.CrossFadeAlpha(0f, duration, false);
+        yield return new WaitForSeconds(duration);
+        textUI.text = "";
     }
 
 
