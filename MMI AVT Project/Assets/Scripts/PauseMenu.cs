@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,8 +11,10 @@ public class PauseMenu : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         pauseMenu.SetActive(false);
+      
+
     }
 
     // Update is called once per frame
@@ -28,6 +31,8 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
+
+      
 
     }
 
@@ -51,5 +56,11 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("DrumFunMain");
+        ResumeGame();
     }
 }
