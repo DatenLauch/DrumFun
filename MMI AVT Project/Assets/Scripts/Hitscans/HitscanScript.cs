@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class HitscanScript : MonoBehaviour
 {
     [SerializeField] ScoreScript scoreSystem;
     [SerializeField] HitsplashScript Hitsplash;
+    [SerializeField] AudioSource audioSourceEffect;
     private Collider colliderObject;
     private float startPositionPerfect = 11.85f;
     private float endPositionPerfect = 12.15f;
- 
+
 
     void Start()
     {
@@ -20,24 +18,31 @@ public class HitscanScript : MonoBehaviour
     {
         if (!PauseMenu.isPaused)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha2) && colliderObject != null)
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                if (colliderObject.transform.position.z >= startPositionPerfect && colliderObject.transform.position.z <= endPositionPerfect)
-                {
-                    Debug.Log("Perfect!");
-                    scoreSystem.addSuccessfulHit(300);
-                    Hitsplash.activateHitsplash("PERFECT!\n+300");
-                    Destroy(colliderObject.gameObject);
-                    colliderObject = null;
-                }
+                audioSourceEffect.Play();
 
-                else
+                if (colliderObject != null)
                 {
-                    Debug.Log("Good");
-                    scoreSystem.addSuccessfulHit(100);
-                    Hitsplash.activateHitsplash("OKAY!\n+100");
-                    Destroy(colliderObject.gameObject);
-                    colliderObject = null;
+                    {
+                        if (colliderObject.transform.position.z >= startPositionPerfect && colliderObject.transform.position.z <= endPositionPerfect)
+                        {
+                            Debug.Log("Perfect!");
+                            scoreSystem.addSuccessfulHit(300);
+                            Hitsplash.activateHitsplash("PERFECT!\n+300");
+                            Destroy(colliderObject.gameObject);
+                            colliderObject = null;
+                        }
+
+                        else
+                        {
+                            Debug.Log("Good");
+                            scoreSystem.addSuccessfulHit(100);
+                            Hitsplash.activateHitsplash("OKAY!\n+100");
+                            Destroy(colliderObject.gameObject);
+                            colliderObject = null;
+                        }
+                    }
                 }
             }
         }
