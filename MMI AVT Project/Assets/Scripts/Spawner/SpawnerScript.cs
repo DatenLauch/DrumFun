@@ -16,9 +16,14 @@ public class SpawnerScript : MonoBehaviour
     int spawnIndex;
     double currentAudioTime;
 
-    [SerializeField] MidSpawnerScript midSpawner;
-    [SerializeField] LeftSpawnerScript leftSpawner;
-    [SerializeField] RightSpawnerScript rightSpawner;
+    
+    [SerializeField] float speed = 10f;
+
+    public GameObject midNote;
+    public GameObject leftNote;
+    public GameObject rightNote;
+
+   // GameObject MidSpawner;
 
     Note[] notesArray;
 
@@ -45,18 +50,21 @@ public class SpawnerScript : MonoBehaviour
                 {
                     if (notesArray[spawnIndex].ToString().Equals("D2"))
                     {
-                        leftSpawner.SpawnObject();
+                        //leftSpawner.SpawnObject();
+                        spawnOjects(new Vector3(1.5f, 0.5f, -18f), leftNote);
                         Debug.Log("D2");
                     }
 
                     if (notesArray[spawnIndex].ToString().Equals("C2"))
                     {
-                        midSpawner.SpawnObject();
+                        spawnOjects(new Vector3(0, 0.5f, -18f), midNote);
+                        //midSpawner.SpawnObject();
                         Debug.Log("C2");
                     }
                     if (notesArray[spawnIndex].ToString().Equals("F#2"))
                     {
-                        rightSpawner.SpawnObject();
+                        spawnOjects(new Vector3(-1.5f, 0.5f, -18f), rightNote);
+                        //rightSpawner.SpawnObject();
                         Debug.Log("F#2");
                     }
                     spawnIndex++;
@@ -65,6 +73,16 @@ public class SpawnerScript : MonoBehaviour
             }
         }
     }
+
+    public void spawnOjects(Vector3 location, GameObject noteToSpawn)
+    {
+
+        GameObject note = Instantiate(noteToSpawn, location, transform.rotation);
+        Rigidbody rbMid = note.GetComponent<Rigidbody>();
+        rbMid.velocity = transform.forward * speed;
+    }
+
+
 
     public double getAudioSourceTime(AudioSource musicSource)
     {
