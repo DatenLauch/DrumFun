@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
-
+using UnityEngine.SceneManagement;
 public class ScoreScript : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText;
@@ -21,6 +21,10 @@ public class ScoreScript : MonoBehaviour
 
     void Update()
     {
+        if(score > 1000)
+        {
+            SceneManager.LoadScene("EndScreen");
+        }
 
     }
 
