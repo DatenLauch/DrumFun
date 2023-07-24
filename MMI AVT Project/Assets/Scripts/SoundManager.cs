@@ -13,7 +13,10 @@ public class SoundManager : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("masterVolume"))
         {
+            masterVolumePercentageText.text = "100%";
+            masterVolumeSlider.value = 1f;
             PlayerPrefs.SetFloat("masterVolume", 1f);
+          
             Load();
         }
         else
@@ -32,6 +35,8 @@ public class SoundManager : MonoBehaviour
 
     private void Load()
     {
+        masterVolumePercentageText.text = ((int)(PlayerPrefs.GetFloat("masterVolume") * 100)).ToString() + "%";
+        masterVolumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
         masterVolumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
     }
 

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - NoteMid
+  - Audio
+  - EffectsAudioTag
   layers:
   - Default
   - TransparentFX
