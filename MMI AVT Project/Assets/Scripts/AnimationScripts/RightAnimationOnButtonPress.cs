@@ -6,10 +6,12 @@ public class RightAnimationOnButtonPress : MonoBehaviour
 {
     public GameObject drum;
     private Animator drumAnimator;
+    private Vector3 originalPos;
 
     private void Start()
     {
         drumAnimator = drum.GetComponent<Animator>();
+        originalPos = drum.transform.position;
     }
 
     void Update()
@@ -18,8 +20,8 @@ public class RightAnimationOnButtonPress : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                Debug.Log("Blue!");
-                drumAnimator.Play("hitAnimation", -1, 0f);
+                drum.transform.position = originalPos;
+                drumAnimator.Play("hitAnimationGreen", -1, 0f);
             }
         }
     }

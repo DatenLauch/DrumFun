@@ -6,10 +6,12 @@ public class MidAnimationOnButtonPress : MonoBehaviour
 {
     public GameObject drum;
     private Animator drumAnimator;
+    private Vector3 originalPos;
 
     private void Start()
     {
         drumAnimator = drum.GetComponent<Animator>();
+        originalPos = drum.transform.position;
     }
 
     void Update()
@@ -18,8 +20,8 @@ public class MidAnimationOnButtonPress : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                Debug.Log("Blue!");
-                drumAnimator.Play("hitAnimation", -1, 0f);
+                drum.transform.position = originalPos;
+                drumAnimator.Play("hitAnimationRed", -1, 0f);
             }
         }
     }
