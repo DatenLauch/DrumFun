@@ -214,8 +214,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107335724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.005, z: 12}
-  m_LocalScale: {x: 1.5, y: 0.01, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0.5, z: 12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 890075868}
@@ -957,7 +957,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936c3b18f68ce7944b6c953afa2165aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: e33e97feeefeb9947af89c36ee808071, type: 3}
+  audioClip: {fileID: 8300000, guid: 5ca52408422f9184cab8156db66a3a45, type: 3}
+  musicSource: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,11 +1234,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9dd2bb6fefe1404882bba6683b1681e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  midiFilePath: Assets/Audio/Midi/littleDrumSnippet.mid
+  midiFilePath: Assets/Audio/Midi/AVTDrums.mid
   musicSource: {fileID: 371450629}
-  noteTravelTime: 1
-  speed: 7
-  midNote: {fileID: 5067411959871769073, guid: 4c84acc4333fee84ba45acbd88612dec, type: 3}
+  musicClip: {fileID: 0}
+  noteTravelTime: 3
+  speed: 10
+  midNote: {fileID: 7654495447050104417, guid: 17c11d7b8f1d49844b9745f75e413c59, type: 3}
   leftNote: {fileID: 5067411959871769073, guid: fc9cbee909721754683b6e1171234070,
     type: 3}
   rightNote: {fileID: 5067411959871769073, guid: 0b608aa0854e22a49abf63363338d87b,
@@ -4355,8 +4357,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7365755003906996312}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0, z: 12}
-  m_LocalScale: {x: 1.5, y: 0.01, z: 1.5}
+  m_LocalPosition: {x: -1.5, y: 0.5, z: 12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 890075868}
@@ -4536,8 +4538,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7365755004952652879}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0.005, z: 12}
-  m_LocalScale: {x: 1.5, y: 0.01, z: 1.5}
+  m_LocalPosition: {x: 1.5, y: 0.5, z: 12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 890075868}

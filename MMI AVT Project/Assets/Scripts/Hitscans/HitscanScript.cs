@@ -6,9 +6,8 @@ public class HitscanScript : MonoBehaviour
     [SerializeField] HitsplashScript Hitsplash;
     [SerializeField] AudioSource audioSourceEffect;
     private Collider colliderObject;
-    private float startPositionPerfect = 11.85f;
-    private float endPositionPerfect = 12.15f;
-
+    private float startPositionPerfect = 11.75f;
+    private float endPositionPerfect = 12.25f;
 
     void Start()
     {
@@ -34,11 +33,19 @@ public class HitscanScript : MonoBehaviour
                             colliderObject = null;
                         }
 
-                        else
+                        else if (colliderObject.transform.position.z < startPositionPerfect)
                         {
                             Debug.Log("Good");
                             scoreSystem.addSuccessfulHit(100);
-                            Hitsplash.activateHitsplash("OKAY!\n+100");
+                            Hitsplash.activateHitsplash("Early!\n+100");
+                            Destroy(colliderObject.gameObject);
+                            colliderObject = null;
+                        }
+                        else if (colliderObject.transform.position.z > endPositionPerfect)
+                        {
+                            Debug.Log("Good");
+                            scoreSystem.addSuccessfulHit(100);
+                            Hitsplash.activateHitsplash("Late!\n+100");
                             Destroy(colliderObject.gameObject);
                             colliderObject = null;
                         }
@@ -50,16 +57,14 @@ public class HitscanScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        Debug.Log("Enter!");
         colliderObject = collision;
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        if (!PauseMenu.isPaused)
-        {
-            Debug.Log("Missed a note!");
-            colliderObject = null;
-            scoreSystem.resetCombo();
-        }
+        scoreSystem.resetCombo();
+        Hitsplash.activateHitsplash("Miss!\n ");
+        colliderObject = null;
     }
 }
