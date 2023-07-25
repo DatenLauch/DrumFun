@@ -13,7 +13,7 @@ public class RestartGame : MonoBehaviour
         int score = PlayerPrefs.GetInt("Score");
         Debug.Log(score);
         // Display the score value in a Text component
-        pointsText.text = "Score: " + score;
+        pointsText.text = score.ToString();
 
     }
 
