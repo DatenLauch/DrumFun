@@ -24,6 +24,7 @@ public class ScoreScript : MonoBehaviour
         if(score > 1000)
         {
             SceneManager.LoadScene("EndScreen");
+            PlayerPrefs.SetInt("Score", (int)score);
         }
 
     }
