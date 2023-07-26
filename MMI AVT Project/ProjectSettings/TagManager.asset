@@ -7,6 +7,7 @@ TagManager:
   - NoteMid
   - Audio
   - EffectsAudioTag
+  - MusicAudioTag
   layers:
   - Default
   - TransparentFX

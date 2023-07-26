@@ -13,40 +13,58 @@ public class SetVolume : MonoBehaviour
     public string audioSourceTag = "Audio";
     public Slider slider;
     public TextMeshProUGUI masterVolumePercentageText;
-
+    private GameObject[] audioObjects;
 
     void Start()
     {
-        GameObject audioObject = GameObject.FindWithTag(audioSourceTag);
-      
-        if (audioObject != null)
+        // Find all GameObjects with the specified tag
+        audioObjects = GameObject.FindGameObjectsWithTag(audioSourceTag);
+
+        masterVolumePercentageText.text = "100%";
+
+        if(audioObjects.Length == 0 || audioObjects == null)
         {
-            audioSource = audioObject.GetComponent<AudioSource>();
-            masterVolumePercentageText.text = ((int)(audioSource.volume * 100)).ToString() + "%";
-            if (audioSource != null)
+            Debug.Log("No game objects with tag :" + audioSourceTag + " found");
+        }
+        else
+        {
+            // Loop through each GameObject and change the volume of the AudioSource
+            foreach (GameObject audioObject in audioObjects)
             {
-                // Set the initial value of the Slider to match the AudioSource volume
-                slider.value = audioSource.volume;
+                AudioSource audioSource = audioObject.GetComponent<AudioSource>();
 
                 // Subscribe to the Slider's OnValueChanged event
                 slider.onValueChanged.AddListener(OnVolumeSliderValueChanged);
             }
-            else
-            {
-                Debug.LogWarning("No AudioSource component found on the GameObject with tag: " + audioSourceTag);
-            }
+            slider.value = 100;
         }
-        else
-        {
-            Debug.LogWarning("No GameObject found with tag: " + audioSourceTag);
-        }
+     
+        
+
+
     }
 
 
     private void OnVolumeSliderValueChanged(float volume)
     {
-        // Update the AudioSource volume based on the Slider value
-        audioSource.volume = volume;
-        masterVolumePercentageText.text = ((int)(volume * 100)).ToString() + "%";
+        if (audioObjects.Length == 0 || audioObjects == null)
+        {
+            Debug.Log("No game objects with tag :" + audioSourceTag + " found");
+        }
+        else
+        {
+            // Loop through each GameObject and change the volume of the AudioSource
+            foreach (GameObject audioObject in audioObjects)
+            {
+                AudioSource audioSource = audioObject.GetComponent<AudioSource>();
+
+                // Update the AudioSource volume based on the Slider value
+                audioSource.volume = volume;
+
+            }
+
+            masterVolumePercentageText.text = ((int)(volume * 100)).ToString() + "%";
+        }
+     
     }
 }

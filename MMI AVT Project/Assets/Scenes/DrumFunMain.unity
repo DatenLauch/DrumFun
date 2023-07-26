@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276788, g: 0.21589147, b: 0.29782534, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1117,7 +1117,7 @@ GameObject:
   - component: {fileID: 371450630}
   m_Layer: 0
   m_Name: MusicSource
-  m_TagString: Untagged
+  m_TagString: MusicAudioTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1508,7 +1508,7 @@ GameObject:
   - component: {fileID: 416339009}
   m_Layer: 0
   m_Name: DrumSound2
-  m_TagString: Untagged
+  m_TagString: EffectsAudioTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1981,7 +1981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  audioSourceTag: Audio
+  audioSourceTag: MusicAudioTag
   slider: {fileID: 769331589}
   masterVolumePercentageText: {fileID: 455977291}
 --- !u!114 &519906978
@@ -3200,7 +3200,7 @@ GameObject:
   - component: {fileID: 824415713}
   m_Layer: 0
   m_Name: DrumSound3
-  m_TagString: Untagged
+  m_TagString: EffectsAudioTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4493,7 +4493,7 @@ GameObject:
   - component: {fileID: 1344106376}
   m_Layer: 0
   m_Name: DrumSound1
-  m_TagString: Untagged
+  m_TagString: EffectsAudioTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4667,7 +4667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Song Volume
+  m_text: Music Volume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
