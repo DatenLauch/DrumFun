@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class LeftHitscanScript : MonoBehaviour
@@ -11,9 +12,11 @@ public class LeftHitscanScript : MonoBehaviour
     private float startPositionPerfect = 11.75f;
     private float endPositionPerfect = 12.25f;
     private bool isHit = false; //boolean to make sure that hits dont become miss
+    private TMP_Text text;
 
     void Start()
     {
+        text = Hitsplash.GetComponentInChildren<TMP_Text>();
     }
 
     void Update()
@@ -42,6 +45,7 @@ public class LeftHitscanScript : MonoBehaviour
                 {
                     isHit = true;
                     scoreSystem.addPerfectHit(300);
+                    text.color = Color.green;
                     Hitsplash.activateHitsplash("PERFECT!\n+300");
                     ApplyForceToColliderObject();
                     colliderObject = null; //so the object cant be hit twice
@@ -51,6 +55,7 @@ public class LeftHitscanScript : MonoBehaviour
                 {
                     isHit = true;
                     scoreSystem.addPoorHit(100);
+                    text.color = Color.yellow;
                     Hitsplash.activateHitsplash("Early!\n+100");
                     ApplyForceToColliderObject();
                     colliderObject = null;
@@ -60,6 +65,7 @@ public class LeftHitscanScript : MonoBehaviour
                 {
                     isHit = true;
                     scoreSystem.addPoorHit(100);
+                    text.color = Color.yellow;
                     Hitsplash.activateHitsplash("Late!\n+100");
                     ApplyForceToColliderObject();
                     colliderObject = null;
@@ -87,6 +93,7 @@ public class LeftHitscanScript : MonoBehaviour
         if (!isHit)
         {
             scoreSystem.resetCombo();
+            text.color = Color.red;
             Hitsplash.activateHitsplash("Miss!\n ");
             colliderObject = null;
         }

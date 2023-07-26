@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class MidiInputScript : MonoBehaviour
 {
-    [SerializeField] GameObject barManager;
     [SerializeField] LeftHitscanScript HitscanScript1;
     [SerializeField] HitscanScript HitscanScript2;
     [SerializeField] RightHitscanScript HitscanScript3;
