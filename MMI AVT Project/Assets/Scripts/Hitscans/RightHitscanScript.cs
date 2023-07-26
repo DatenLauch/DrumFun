@@ -28,9 +28,8 @@ public class RightHitscanScript : MonoBehaviour
                     {
                         if (colliderObject.transform.position.z >= startPositionPerfect && colliderObject.transform.position.z <= endPositionPerfect)
                         {
-                            Debug.Log("Perfect!");
                             isHit = true;
-                            scoreSystem.addSuccessfulHit(300);
+                            scoreSystem.addPerfectHit(300);
                             Hitsplash.activateHitsplash("PERFECT!\n+300");
                             ApplyForceToColliderObject();
                             //Destroy(colliderObject.gameObject);
@@ -41,8 +40,7 @@ public class RightHitscanScript : MonoBehaviour
                         else if (colliderObject.transform.position.z < startPositionPerfect)
                         {
                             isHit = true;
-                            Debug.Log("Good");
-                            scoreSystem.addSuccessfulHit(100);
+                            scoreSystem.addPoorHit(100);
                             Hitsplash.activateHitsplash("Early!\n+100");
                             ApplyForceToColliderObject();
                             //Destroy(colliderObject.gameObject);
@@ -52,14 +50,12 @@ public class RightHitscanScript : MonoBehaviour
                         else if (colliderObject.transform.position.z > endPositionPerfect)
                         {
                             isHit = true;
-                            Debug.Log("Good");
-                            scoreSystem.addSuccessfulHit(100);
+                            scoreSystem.addPoorHit(100);
                             Hitsplash.activateHitsplash("Late!\n+100");
                             ApplyForceToColliderObject();
                             //Destroy(colliderObject.gameObject);
                             colliderObject = null;
                         }
-
                     }
                 }
             }
@@ -74,7 +70,6 @@ public class RightHitscanScript : MonoBehaviour
             //colliderRb.mass = 0.5f;
             colliderRb.AddForce(Vector3.up * forceMagnitude + Vector3.left * forceMagnitude);
         }
-
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -86,7 +81,6 @@ public class RightHitscanScript : MonoBehaviour
     {
         if (!isHit)
         {
-            Debug.Log("real Miss");
             scoreSystem.resetCombo();
             Hitsplash.activateHitsplash("Miss!\n ");
             colliderObject = null;
