@@ -5,7 +5,7 @@ public class LeftHitscanScript : MonoBehaviour
     [SerializeField] ScoreScript scoreSystem;
     [SerializeField] HitsplashScript Hitsplash;
     [SerializeField] AudioSource audioSourceEffect;
-    [SerializeField] float forceMagnitude = 50f;
+    [SerializeField] float forceMagnitude;
     private Collider colliderObject;
     private float startPositionPerfect = 11.75f;
     private float endPositionPerfect = 12.25f;
@@ -13,6 +13,7 @@ public class LeftHitscanScript : MonoBehaviour
 
     void Start()
     {
+        forceMagnitude = 500f;
     }
 
     void Update()
@@ -68,6 +69,7 @@ public class LeftHitscanScript : MonoBehaviour
 
     private void ApplyForceToColliderObject()
     {
+        Debug.Log("Applying Force");
         Rigidbody colliderRb = colliderObject.GetComponent<Rigidbody>();
         if (colliderRb != null)
         {

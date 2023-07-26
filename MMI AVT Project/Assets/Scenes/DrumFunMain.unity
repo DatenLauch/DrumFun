@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276788, g: 0.21589147, b: 0.29782534, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2039,7 +2039,7 @@ MonoBehaviour:
     type: 3}
   drum1: 1
   drum2: 1
-  drum3: 0
+  drum3: 1
 --- !u!224 &501616669 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8764805732320727778, guid: 9e6b91a26e97141e593c8ed7a4fa197f,
@@ -4562,7 +4562,7 @@ MonoBehaviour:
   scoreSystem: {fileID: 1654173395}
   Hitsplash: {fileID: 1719019676}
   audioSourceEffect: {fileID: 1344106376}
-  forceMagnitude: 50
+  forceMagnitude: 200
 --- !u!1 &1329931593
 GameObject:
   m_ObjectHideFlags: 0
@@ -5515,7 +5515,7 @@ MonoBehaviour:
   scoreSystem: {fileID: 1654173395}
   Hitsplash: {fileID: 789194211}
   audioSourceEffect: {fileID: 824415713}
-  forceMagnitude: 50
+  forceMagnitude: 500
 --- !u!1 &1625736105
 GameObject:
   m_ObjectHideFlags: 0
