@@ -1,48 +1,70 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HitscanScript : MonoBehaviour
 {
-
-    [SerializeField]
-    private ScoreScript scoreSystem;
+    [SerializeField] ScoreScript scoreSystem;
+    [SerializeField] HitsplashScript Hitsplash;
+    [SerializeField] AudioSource audioSourceEffect;
     private Collider colliderObject;
+    private float startPositionPerfect = 11.75f;
+    private float endPositionPerfect = 12.25f;
 
     void Start()
     {
-
     }
 
     void Update()
     {
-        //Debug.Log("uppies!");
         if (!PauseMenu.isPaused)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha2) && colliderObject != null)
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                //Debug.Log("Success!");
-                Destroy(colliderObject.gameObject);
-                colliderObject = null;
-                scoreSystem.addSuccessfulHit(100);
+                audioSourceEffect.Play();
+
+                if (colliderObject != null)
+                {
+                    {
+                        if (colliderObject.transform.position.z >= startPositionPerfect && colliderObject.transform.position.z <= endPositionPerfect)
+                        {
+                            Debug.Log("Perfect!");
+                            scoreSystem.addSuccessfulHit(300);
+                            Hitsplash.activateHitsplash("PERFECT!\n+300");
+                            Destroy(colliderObject.gameObject);
+                            colliderObject = null;
+                        }
+
+                        else if (colliderObject.transform.position.z < startPositionPerfect)
+                        {
+                            Debug.Log("Good");
+                            scoreSystem.addSuccessfulHit(100);
+                            Hitsplash.activateHitsplash("Early!\n+100");
+                            Destroy(colliderObject.gameObject);
+                            colliderObject = null;
+                        }
+                        else if (colliderObject.transform.position.z > endPositionPerfect)
+                        {
+                            Debug.Log("Good");
+                            scoreSystem.addSuccessfulHit(100);
+                            Hitsplash.activateHitsplash("Late!\n+100");
+                            Destroy(colliderObject.gameObject);
+                            colliderObject = null;
+                        }
+                    }
+                }
             }
         }
-       
     }
 
     private void OnTriggerEnter(Collider collision)
     {
+        Debug.Log("Enter!");
         colliderObject = collision;
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        if (!PauseMenu.isPaused)
-        {
-           // Debug.Log("Missed a note!");
-            colliderObject = null;
-            scoreSystem.resetCombo();
-        }
-
+        scoreSystem.resetCombo();
+        Hitsplash.activateHitsplash("Miss!\n ");
+        colliderObject = null;
     }
 }

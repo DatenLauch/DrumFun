@@ -1,20 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
+    [SerializeField] Canvas pauseCanvas;
     public GameObject pauseMenu;
     public static bool isPaused;
 
     // Start is called before the first frame update
     void Start()
     { 
-        pauseMenu.SetActive(false);
-      
-
     }
 
     // Update is called once per frame
@@ -31,14 +26,11 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
-
-      
-
     }
 
     public void PauseGame()
     {
-        pauseMenu.SetActive(true);
+        pauseCanvas.enabled = true;
         Time.timeScale = 0f;
         AudioListener.pause = true;
         isPaused = true;
@@ -46,7 +38,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        pauseMenu.SetActive(false);
+        pauseCanvas.enabled = false;
         Time.timeScale = 1f;
         AudioListener.pause = false;
         isPaused = false;

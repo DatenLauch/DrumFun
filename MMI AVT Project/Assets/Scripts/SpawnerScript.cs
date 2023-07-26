@@ -1,42 +1,40 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
-using UnityEngine.Assertions.Must;
+using System;
+using UnityEngine.SceneManagement;
 
 public class SpawnerScript : MonoBehaviour
 {
     MidiFile midiFile;
     [SerializeField] string midiFilePath;
     [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioClip musicClip;
     [SerializeField] int noteTravelTime;
-
+    [SerializeField] float speed = 10f;
+    [SerializeField] GameObject midNote;
+    [SerializeField] GameObject leftNote;
+    [SerializeField] GameObject rightNote;
+    [SerializeField] Boolean drum1;
+    [SerializeField] Boolean drum2;
+    [SerializeField] Boolean drum3;
+    Note[] notesArray;
     List<double> timeStamps = new List<double>();
     int spawnIndex;
+    int timeStampsCounted;
     double currentAudioTime;
-
-    
-    [SerializeField] float speed = 10f;
-
-    public GameObject midNote;
-    public GameObject leftNote;
-    public GameObject rightNote;
-
-   // GameObject MidSpawner;
-
-    Note[] notesArray;
 
     void Start()
     {
-        //get midi data
         midiFile = MidiFile.Read(midiFilePath);
         ICollection<Note> notes = midiFile.GetNotes();
         notesArray = new Note[notes.Count];
         notes.CopyTo(notesArray, 0);
         setTimeStamps(notesArray);
-
-        Invoke(nameof(startMusicPlayer), noteTravelTime);
+        timeStampsCounted = timeStamps.Count;
+        musicSource.clip = musicClip;
+        musicSource.Play();
     }
 
     void Update()
@@ -46,52 +44,48 @@ public class SpawnerScript : MonoBehaviour
             currentAudioTime = getAudioSourceTime(musicSource);
             if (currentAudioTime != 0)
             {
-                if ((currentAudioTime) >= timeStamps[spawnIndex])
+                while (currentAudioTime >= timeStamps[spawnIndex] - noteTravelTime)
                 {
-                    if (notesArray[spawnIndex].ToString().Equals("D2"))
+                    if (notesArray[spawnIndex].ToString().Equals("C#2") && drum1)
                     {
-                        //leftSpawner.SpawnObject();
                         spawnOjects(new Vector3(1.5f, 0.5f, -18f), leftNote);
-                        Debug.Log("D2");
+                        //Debug.Log("D2");
                     }
-
-                    if (notesArray[spawnIndex].ToString().Equals("C2"))
+                    if (notesArray[spawnIndex].ToString().Equals("C2") && drum2)
                     {
                         spawnOjects(new Vector3(0, 0.5f, -18f), midNote);
-                        //midSpawner.SpawnObject();
-                        Debug.Log("C2");
+                        //Debug.Log("C2");
                     }
-                    if (notesArray[spawnIndex].ToString().Equals("F#2"))
+                    if (notesArray[spawnIndex].ToString().Equals("D2") && drum3)
                     {
                         spawnOjects(new Vector3(-1.5f, 0.5f, -18f), rightNote);
-                        //rightSpawner.SpawnObject();
-                        Debug.Log("F#2");
+                        //Debug.Log("F#2");
                     }
-                    spawnIndex++;
-                    Debug.Log(notesArray[spawnIndex - 1]);
+                    if (spawnIndex < timeStampsCounted)
+                    {
+                        spawnIndex++;
+                    }
+                    if (spawnIndex == timeStampsCounted)
+                    {
+                        Invoke(nameof(showScore), 5f);
+                        return;
+                    }
+                    currentAudioTime = getAudioSourceTime(musicSource);
                 }
             }
         }
     }
 
-    public void spawnOjects(Vector3 location, GameObject noteToSpawn)
+    void spawnOjects(Vector3 location, GameObject noteToSpawn)
     {
-
         GameObject note = Instantiate(noteToSpawn, location, transform.rotation);
         Rigidbody rbMid = note.GetComponent<Rigidbody>();
         rbMid.velocity = transform.forward * speed;
     }
 
-
-
     public double getAudioSourceTime(AudioSource musicSource)
     {
         return (double)musicSource.timeSamples / musicSource.clip.frequency;
-    }
-
-    void startMusicPlayer()
-    {
-        musicSource.GetComponent<MusicScript>().playMusic();
     }
 
     void setTimeStamps(Note[] array)
@@ -101,5 +95,10 @@ public class SpawnerScript : MonoBehaviour
             MetricTimeSpan metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, midiFile.GetTempoMap());
             timeStamps.Add((double)metricTimeSpan.Minutes * 60f + (double)metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
         }
+    }
+
+    void showScore()
+    {
+        SceneManager.LoadScene("EndScreen");
     }
 }

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class SetVolume : MonoBehaviour
 {
 
-    private AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
     public string audioSourceTag = "Audio";
     public Slider slider;
     public TextMeshProUGUI masterVolumePercentageText;
