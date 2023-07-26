@@ -5,9 +5,11 @@ public class RightHitscanScript : MonoBehaviour
     [SerializeField] ScoreScript scoreSystem;
     [SerializeField] HitsplashScript Hitsplash;
     [SerializeField] AudioSource audioSourceEffect;
+    [SerializeField] float forceMagnitude = 50f;
     private Collider colliderObject;
     private float startPositionPerfect = 11.75f;
     private float endPositionPerfect = 12.25f;
+    private bool isHit = false;
 
     void Start()
     {
@@ -27,32 +29,52 @@ public class RightHitscanScript : MonoBehaviour
                         if (colliderObject.transform.position.z >= startPositionPerfect && colliderObject.transform.position.z <= endPositionPerfect)
                         {
                             Debug.Log("Perfect!");
+                            isHit = true;
                             scoreSystem.addSuccessfulHit(300);
                             Hitsplash.activateHitsplash("PERFECT!\n+300");
-                            Destroy(colliderObject.gameObject);
+                            ApplyForceToColliderObject();
+                            //Destroy(colliderObject.gameObject);
                             colliderObject = null;
+
                         }
 
                         else if (colliderObject.transform.position.z < startPositionPerfect)
                         {
+                            isHit = true;
                             Debug.Log("Good");
                             scoreSystem.addSuccessfulHit(100);
                             Hitsplash.activateHitsplash("Early!\n+100");
-                            Destroy(colliderObject.gameObject);
+                            ApplyForceToColliderObject();
+                            //Destroy(colliderObject.gameObject);
                             colliderObject = null;
+
                         }
                         else if (colliderObject.transform.position.z > endPositionPerfect)
                         {
+                            isHit = true;
                             Debug.Log("Good");
                             scoreSystem.addSuccessfulHit(100);
                             Hitsplash.activateHitsplash("Late!\n+100");
-                            Destroy(colliderObject.gameObject);
+                            ApplyForceToColliderObject();
+                            //Destroy(colliderObject.gameObject);
                             colliderObject = null;
                         }
+
                     }
                 }
             }
         }
+    }
+
+    private void ApplyForceToColliderObject()
+    {
+        Rigidbody colliderRb = colliderObject.GetComponent<Rigidbody>();
+        if (colliderRb != null)
+        {
+            //colliderRb.mass = 0.5f;
+            colliderRb.AddForce(Vector3.up * forceMagnitude + Vector3.left * forceMagnitude);
+        }
+
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -62,8 +84,13 @@ public class RightHitscanScript : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        scoreSystem.resetCombo();
-        Hitsplash.activateHitsplash("Miss!\n ");
-        colliderObject = null;
+        if (!isHit)
+        {
+            Debug.Log("real Miss");
+            scoreSystem.resetCombo();
+            Hitsplash.activateHitsplash("Miss!\n ");
+            colliderObject = null;
+        }
+        isHit = false;
     }
 }
