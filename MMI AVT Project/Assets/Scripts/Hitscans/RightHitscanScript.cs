@@ -5,7 +5,7 @@ public class RightHitscanScript : MonoBehaviour
     [SerializeField] ScoreScript scoreSystem;
     [SerializeField] HitsplashScript Hitsplash;
     [SerializeField] AudioSource audioSourceEffect;
-    [SerializeField] float forceMagnitude = 50f;
+    [SerializeField] float forceMagnitude = 500f;
     private Collider colliderObject;
     private float startPositionPerfect = 11.75f;
     private float endPositionPerfect = 12.25f;
