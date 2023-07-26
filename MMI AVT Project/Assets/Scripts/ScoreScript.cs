@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class ScoreScript : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class ScoreScript : MonoBehaviour
     private int misses;
     private int hits;
     private double accuracy;
+    private int highestCombo;
+
 
     void Start()
     {
@@ -21,7 +24,7 @@ public class ScoreScript : MonoBehaviour
 
     void Update()
     {
-
+        addStatsToPlayerPrefs();
     }
 
     void updateScoreText()
@@ -76,5 +79,19 @@ public class ScoreScript : MonoBehaviour
         updateComboText();
         updateScoreText();
         updateAccuracyText();
+
+        if (combo > highestCombo)
+        {
+            highestCombo = combo;
+        }
     }
+
+    public void addStatsToPlayerPrefs()
+    {
+        PlayerPrefs.SetInt("score", ((int)score));
+        PlayerPrefs.SetFloat("accuracy", (float)accuracy);
+        PlayerPrefs.SetInt("highestCombo", highestCombo);
+    }
+
+
 }
