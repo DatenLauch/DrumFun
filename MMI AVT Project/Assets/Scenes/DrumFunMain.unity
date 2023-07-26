@@ -4452,7 +4452,7 @@ MonoBehaviour:
   scoreSystem: {fileID: 1654173395}
   Hitsplash: {fileID: 1719019676}
   audioSourceEffect: {fileID: 1344106376}
-  forceMagnitude: 200
+  forceMagnitude: 500
 --- !u!1 &1329931593
 GameObject:
   m_ObjectHideFlags: 0
