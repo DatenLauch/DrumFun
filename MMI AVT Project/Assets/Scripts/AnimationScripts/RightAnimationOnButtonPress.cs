@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RightAnimationOnButtonPress : MonoBehaviour
@@ -16,13 +14,11 @@ public class RightAnimationOnButtonPress : MonoBehaviour
 
     void Update()
     {
-        if (!PauseMenu.isPaused)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                drum.transform.position = originalPos;
-                drumAnimator.Play("hitAnimationGreen", -1, 0f);
-            }
-        }
+    }
+
+    public void playAnimation()
+    {
+        drum.transform.position = originalPos;
+        drumAnimator.Play("hitAnimationGreen", -1, 0f);
     }
 }

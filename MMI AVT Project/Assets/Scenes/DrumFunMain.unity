@@ -923,6 +923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreSystem: {fileID: 1654173395}
   Hitsplash: {fileID: 1993085779}
+  MidAnimationOnButtonPress: {fileID: 8026980061987780610}
   audioSourceEffect: {fileID: 416339009}
   forceMagnitude: 500
 --- !u!1 &328651985
@@ -2039,7 +2040,7 @@ MonoBehaviour:
     type: 3}
   drum1: 1
   drum2: 1
-  drum3: 1
+  drum3: 0
 --- !u!224 &501616669 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8764805732320727778, guid: 9e6b91a26e97141e593c8ed7a4fa197f,
@@ -2407,52 +2408,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592574214}
   m_CullTransparentMesh: 1
---- !u!1 &639810286
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 639810288}
-  - component: {fileID: 639810287}
-  m_Layer: 0
-  m_Name: BarManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &639810287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639810286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d71be92e3ef8d74e99ecd31c4d1f5c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  barManager: {fileID: 639810286}
-  barsReleased: []
---- !u!4 &639810288
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639810286}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1338284528}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &654159379
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,9 +3005,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 543450653225706344}
   - {fileID: 5043950393216317704}
   - {fileID: 4144898264951513723}
+  - {fileID: 543450653225706344}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3216,7 +3171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textUI: {fileID: 1927703031}
-  duration: 3
+  duration: 1
 --- !u!114 &789194212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4295,7 +4250,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d9d26443ef3c324497fa31062e286bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barManager: {fileID: 639810286}
+  barManager: {fileID: 0}
+  HitscanScript1: {fileID: 1326657671}
+  HitscanScript2: {fileID: 201466304}
+  HitscanScript3: {fileID: 1620927814}
 --- !u!4 &1271228180
 Transform:
   m_ObjectHideFlags: 0
@@ -4451,6 +4409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreSystem: {fileID: 1654173395}
   Hitsplash: {fileID: 1719019676}
+  leftAnimationOnButtonPress: {fileID: 5671270548004004787}
   audioSourceEffect: {fileID: 1344106376}
   forceMagnitude: 500
 --- !u!1 &1329931593
@@ -4589,7 +4548,6 @@ Transform:
   - {fileID: 1654173394}
   - {fileID: 552447614}
   - {fileID: 1271228180}
-  - {fileID: 639810288}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5404,6 +5362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreSystem: {fileID: 1654173395}
   Hitsplash: {fileID: 789194211}
+  RightAnimationOnButtonPress: {fileID: 5866666021561383187}
   audioSourceEffect: {fileID: 824415713}
   forceMagnitude: 500
 --- !u!1 &1625736105
@@ -5634,7 +5593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textUI: {fileID: 664683643}
-  duration: 3
+  duration: 1
 --- !u!114 &1719019677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6367,7 +6326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textUI: {fileID: 405613386}
-  duration: 3
+  duration: 1
 --- !u!114 &1993085780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6880,7 +6839,7 @@ Transform:
   - {fileID: 8879528566930486262}
   - {fileID: 3182341865776713341}
   m_Father: {fileID: 756620732}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &919132149503277522
 GameObject:
@@ -7133,7 +7092,7 @@ Transform:
   - {fileID: 4987022248859316965}
   - {fileID: 1307989406452289390}
   m_Father: {fileID: 756620732}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &4248956068883417340
 GameObject:
@@ -7348,7 +7307,7 @@ Transform:
   - {fileID: 4129628760753465750}
   - {fileID: 7952508415603430429}
   m_Father: {fileID: 756620732}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &5119959981805640244
 GameObject:
