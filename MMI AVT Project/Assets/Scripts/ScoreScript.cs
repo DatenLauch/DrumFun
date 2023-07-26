@@ -11,20 +11,19 @@ public class ScoreScript : MonoBehaviour
     private long score;
     private int combo;
     private int totalNotes;
+    private int perfectHits;
+    private int poorHits;
     private int misses;
-    private int hits;
     private double accuracy;
     private int highestCombo;
 
 
     void Start()
     {
-
     }
 
     void Update()
-    {
-        addStatsToPlayerPrefs();
+    {       
     }
 
     void updateScoreText()
@@ -39,23 +38,9 @@ public class ScoreScript : MonoBehaviour
 
     void updateAccuracyText()
     {
-        if (misses == 0)
-        {
-            accuracy = 100;
-            AccuracyText.text = "Accuracy\n" + accuracy + "%";
-        }
-
-        else if (hits == 0)
-        {
-            accuracy = 0;
-            AccuracyText.text = "Accuracy\n" + accuracy + "%";
-        }
-        else
-        {
-            accuracy = ((double)hits / totalNotes) * 100;
-            accuracy = Math.Round(accuracy, 2);
-            AccuracyText.text = "Accuracy\n" + accuracy + "%";
-        }
+        accuracy = ((perfectHits + (double)poorHits / 2)) / totalNotes * 100f;
+        accuracy = Math.Round(accuracy, 2);
+        AccuracyText.text = "Accuracy\n" + accuracy + "%";
     }
 
     public void resetCombo()
@@ -67,13 +52,32 @@ public class ScoreScript : MonoBehaviour
         updateAccuracyText();
     }
 
-    public void addSuccessfulHit(int points)
+    public void addPerfectHit(int points)
     {
         if (combo == 0)
             score = points + score;
         if (combo > 0)
             score = points * combo + score;
-        hits++;
+        perfectHits++;
+        combo++;
+        totalNotes++;
+        updateComboText();
+        updateScoreText();
+        updateAccuracyText();
+
+        if (combo > highestCombo)
+        {
+            highestCombo = combo;
+        }
+    }
+
+    public void addPoorHit(int points)
+    {
+        if (combo == 0)
+            score = points + score;
+        if (combo > 0)
+            score = points * combo + score;
+        poorHits++;
         combo++;
         totalNotes++;
         updateComboText();
@@ -92,6 +96,4 @@ public class ScoreScript : MonoBehaviour
         PlayerPrefs.SetFloat("accuracy", (float)accuracy);
         PlayerPrefs.SetInt("highestCombo", highestCombo);
     }
-
-
 }
