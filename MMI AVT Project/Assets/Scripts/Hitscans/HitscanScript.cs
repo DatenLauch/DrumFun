@@ -1,7 +1,5 @@
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using static System.Net.Mime.MediaTypeNames;
+using UnityEngine;
 
 public class HitscanScript : MonoBehaviour
 {
