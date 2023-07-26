@@ -45,7 +45,7 @@ public class HitscanScript : MonoBehaviour
                 {
                     isHit = true;
                     scoreSystem.addPerfectHit(300);
-                    Hitsplash.GetComponentInChildren<TMP_Text>().color = Color.green;
+                    text.color = Color.green;
                     Hitsplash.activateHitsplash("PERFECT!\n+300");
                     ApplyForceToColliderObject();
                     colliderObject = null;  //so the object cant be hit twice
@@ -55,7 +55,7 @@ public class HitscanScript : MonoBehaviour
                 {
                     isHit = true;
                     scoreSystem.addPoorHit(100);
-                    Hitsplash.GetComponentInChildren<TMP_Text>().color = Color.yellow;
+                    text.color = Color.yellow;
                     Hitsplash.activateHitsplash("Early!\n+100");
                     ApplyForceToColliderObject();
                     colliderObject = null;
@@ -65,7 +65,7 @@ public class HitscanScript : MonoBehaviour
                 {
                     isHit = true;
                     scoreSystem.addPoorHit(100);
-                    Hitsplash.GetComponentInChildren<TMP_Text>().color = Color.yellow;
+                    text.color = Color.yellow;
                     Hitsplash.activateHitsplash("Late!\n+100");
                     ApplyForceToColliderObject();
                     colliderObject = null;
