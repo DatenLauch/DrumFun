@@ -6,25 +6,25 @@ public class RightHitscanScript : MonoBehaviour
     [SerializeField] HitsplashScript Hitsplash;
     [SerializeField] RightAnimationOnButtonPress RightAnimationOnButtonPress;
     [SerializeField] AudioSource audioSourceEffect;
-    [SerializeField] float forceMagnitude = 500f;
+    [SerializeField] float forceMagnitude;   
     private Collider colliderObject;
     private float startPositionPerfect = 11.75f;
     private float endPositionPerfect = 12.25f;
-    private bool isHit = false;
+    private bool isHit = false;     //boolean to make sure that hits dont become miss
 
     void Start()
     {
     }
-
+                        
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3)) //checks if key3 is pressed
         {
             activateHitscan();
         }
     }
 
-    public void playerHitsDrum()
+    public void playerHitsDrum()    //checks if a drum is hit
     {
         activateHitscan();
     }
@@ -34,18 +34,17 @@ public class RightHitscanScript : MonoBehaviour
         if (!PauseMenu.isPaused)
         {
             audioSourceEffect.Play();
-            RightAnimationOnButtonPress.playAnimation();
+            RightAnimationOnButtonPress.playAnimation(); //plays the drum animation
 
             if (colliderObject != null)
-            {
+            {     //checks if its in a middle of the drum
                 if (colliderObject.transform.position.z >= startPositionPerfect && colliderObject.transform.position.z <= endPositionPerfect)
                 {
                     isHit = true;
                     scoreSystem.addPerfectHit(300);
                     Hitsplash.activateHitsplash("PERFECT!\n+300");
                     ApplyForceToColliderObject();
-                    //Destroy(colliderObject.gameObject);
-                    colliderObject = null;
+                    colliderObject = null; //so the object cant be hit twice
                 }
 
                 else if (colliderObject.transform.position.z < startPositionPerfect)
@@ -54,7 +53,6 @@ public class RightHitscanScript : MonoBehaviour
                     scoreSystem.addPoorHit(100);
                     Hitsplash.activateHitsplash("Early!\n+100");
                     ApplyForceToColliderObject();
-                    //Destroy(colliderObject.gameObject);
                     colliderObject = null;
                 }
 
@@ -64,28 +62,26 @@ public class RightHitscanScript : MonoBehaviour
                     scoreSystem.addPoorHit(100);
                     Hitsplash.activateHitsplash("Late!\n+100");
                     ApplyForceToColliderObject();
-                    //Destroy(colliderObject.gameObject);
                     colliderObject = null;
                 }
             }
         }
     }
-
+    //method to apply force to an object, makes balls bounce
     private void ApplyForceToColliderObject()
     {
         Rigidbody colliderRb = colliderObject.GetComponent<Rigidbody>();
         if (colliderRb != null)
         {
-            //colliderRb.mass = 0.5f;
             colliderRb.AddForce(Vector3.up * forceMagnitude + Vector3.left * forceMagnitude);
         }
     }
-
+    //checks if a ball enters a hitzone
     private void OnTriggerEnter(Collider collision)
     {
         colliderObject = collision;
     }
-
+    //if player does not hit resets the combo to zero
     private void OnTriggerExit(Collider collision)
     {
         if (!isHit)
