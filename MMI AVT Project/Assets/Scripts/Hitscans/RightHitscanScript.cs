@@ -4,6 +4,7 @@ public class RightHitscanScript : MonoBehaviour
 {
     [SerializeField] ScoreScript scoreSystem;
     [SerializeField] HitsplashScript Hitsplash;
+    [SerializeField] RightAnimationOnButtonPress RightAnimationOnButtonPress;
     [SerializeField] AudioSource audioSourceEffect;
     [SerializeField] float forceMagnitude = 500f;
     private Collider colliderObject;
@@ -17,46 +18,54 @@ public class RightHitscanScript : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            activateHitscan();
+        }
+    }
+
+    public void playerHitsDrum()
+    {
+        activateHitscan();
+    }
+
+    private void activateHitscan()
+    {
         if (!PauseMenu.isPaused)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            audioSourceEffect.Play();
+            RightAnimationOnButtonPress.playAnimation();
+
+            if (colliderObject != null)
             {
-                audioSourceEffect.Play();
-
-                if (colliderObject != null)
+                if (colliderObject.transform.position.z >= startPositionPerfect && colliderObject.transform.position.z <= endPositionPerfect)
                 {
-                    {
-                        if (colliderObject.transform.position.z >= startPositionPerfect && colliderObject.transform.position.z <= endPositionPerfect)
-                        {
-                            isHit = true;
-                            scoreSystem.addPerfectHit(300);
-                            Hitsplash.activateHitsplash("PERFECT!\n+300");
-                            ApplyForceToColliderObject();
-                            //Destroy(colliderObject.gameObject);
-                            colliderObject = null;
+                    isHit = true;
+                    scoreSystem.addPerfectHit(300);
+                    Hitsplash.activateHitsplash("PERFECT!\n+300");
+                    ApplyForceToColliderObject();
+                    //Destroy(colliderObject.gameObject);
+                    colliderObject = null;
+                }
 
-                        }
+                else if (colliderObject.transform.position.z < startPositionPerfect)
+                {
+                    isHit = true;
+                    scoreSystem.addPoorHit(100);
+                    Hitsplash.activateHitsplash("Early!\n+100");
+                    ApplyForceToColliderObject();
+                    //Destroy(colliderObject.gameObject);
+                    colliderObject = null;
+                }
 
-                        else if (colliderObject.transform.position.z < startPositionPerfect)
-                        {
-                            isHit = true;
-                            scoreSystem.addPoorHit(100);
-                            Hitsplash.activateHitsplash("Early!\n+100");
-                            ApplyForceToColliderObject();
-                            //Destroy(colliderObject.gameObject);
-                            colliderObject = null;
-
-                        }
-                        else if (colliderObject.transform.position.z > endPositionPerfect)
-                        {
-                            isHit = true;
-                            scoreSystem.addPoorHit(100);
-                            Hitsplash.activateHitsplash("Late!\n+100");
-                            ApplyForceToColliderObject();
-                            //Destroy(colliderObject.gameObject);
-                            colliderObject = null;
-                        }
-                    }
+                else if (colliderObject.transform.position.z > endPositionPerfect)
+                {
+                    isHit = true;
+                    scoreSystem.addPoorHit(100);
+                    Hitsplash.activateHitsplash("Late!\n+100");
+                    ApplyForceToColliderObject();
+                    //Destroy(colliderObject.gameObject);
+                    colliderObject = null;
                 }
             }
         }
