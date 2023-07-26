@@ -41,6 +41,7 @@ public class ScoreScript : MonoBehaviour
         accuracy = ((perfectHits + (double)poorHits / 2)) / totalNotes * 100f;
         accuracy = Math.Round(accuracy, 2);
         AccuracyText.text = "Accuracy\n" + accuracy + "%";
+        addStatsToPlayerPrefs();
     }
 
     public void resetCombo()
@@ -92,8 +93,12 @@ public class ScoreScript : MonoBehaviour
 
     public void addStatsToPlayerPrefs()
     {
-        PlayerPrefs.SetInt("score", ((int)score));
+        PlayerPrefs.SetInt("score", (int)score);
         PlayerPrefs.SetFloat("accuracy", (float)accuracy);
         PlayerPrefs.SetInt("highestCombo", highestCombo);
+        PlayerPrefs.SetInt("perfectHits", perfectHits);
+        PlayerPrefs.SetInt("poorHits", poorHits);
+        PlayerPrefs.SetInt("totalNotes", totalNotes);
+        PlayerPrefs.SetInt("misses", misses);
     }
 }
