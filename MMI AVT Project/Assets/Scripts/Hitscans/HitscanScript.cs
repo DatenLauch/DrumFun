@@ -44,7 +44,6 @@ public class HitscanScript : MonoBehaviour
                     scoreSystem.addPerfectHit(300);
                     Hitsplash.activateHitsplash("PERFECT!\n+300");
                     ApplyForceToColliderObject();
-                    //Destroy(colliderObject.gameObject);
                     colliderObject = null;  //so the object cant be hit twice
                 }
 
@@ -54,7 +53,6 @@ public class HitscanScript : MonoBehaviour
                     scoreSystem.addPoorHit(100);
                     Hitsplash.activateHitsplash("Early!\n+100");
                     ApplyForceToColliderObject();
-                    //Destroy(colliderObject.gameObject);
                     colliderObject = null;
                 }
 
@@ -64,7 +62,6 @@ public class HitscanScript : MonoBehaviour
                     scoreSystem.addPoorHit(100);
                     Hitsplash.activateHitsplash("Late!\n+100");
                     ApplyForceToColliderObject();
-                    //Destroy(colliderObject.gameObject);
                     colliderObject = null;
                 }
             }
