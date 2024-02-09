@@ -2,6 +2,8 @@
 
 Dieses Projekt entstand im Rahmen einer Studienleistung für das Modul “Audio- und Videotechnik” und "Mensch-Maschine Interaktion". Es handelt sich hierbei um ein Rhythmus-Spiel, welches den Umgang mit einem Schlagzeug spielerisch fördern soll.
 
+![drumfun](https://github.com/DatenLauch/DrumFun/assets/103434272/99762eae-c5af-44ee-ae01-27094d1af108)
+
 ## Installation
 Das Programm ist vorerst nur über einen Unity Editor ausführbar, welches über den Unity-Hub installiert werden kann: 
 https://unity.com/de/download Das Projekt verwendet und empfiehlt einen Editor der Version 2021.3.22f1.
@@ -16,11 +18,11 @@ https://unity.com/de/download Das Projekt verwendet und empfiehlt einen Editor d
 ## Spielanleitung
 Ziel ist es, die sich nähernden farbigen Kugeln so genau wie möglich zur Musik zu treffen, indem 3 Drums aktiviert werden. Diese können entweder über einen Midi-Controller oder die Tastatur angesteuert werden. Das Spiel kann mit “esc” pausiert werden und bietet dort die Möglichkeit, die Lautstärke zu ändern. Nachdem das Level abgeschlossen wurde, erscheint ein Scorescreen, welcher das erzielte Ergebnis anzeigt. Bei mehreren Durchläufen hat der Spieler nun die Möglichkeit, den persönlichen Fortschritt zu überprüfen, indem die Ergebnisse verglichen werden. Tastenbelegung
 
-## Midi-Controller
-Ein Midi-Controller kann als Eingabegerät verwendet werden, indem der Input über die Noten “D2”, “C2” und “G2” gesendet wird. Diese Noten wurden als Standard gewählt, da diese mit dem Schlagzeug “Roland TD-1K” getestet wurden (Snare, Floor Tom und Hi-Hat). Um zu erfahren, welche Noten ein Midi-Controller wann sendet, können im MidiInputScript.cs die Zeilen 28-37 auskommentiert werden, damit genauere Informationen auf der Konsole angezeigt werden. Um die Belegung nun zu ändern, müssen die entsprechenden Noten aus Zeile 39-47 ausgetauscht werden.
-
 ## Tastatur & Maus
-Die Drums können auch über die Tasten 1, 2 und 3 aktiviert werden. Pause mit “esc”. Alle UI-Elemente wie etwa Buttons und Slider werden per Maus bedient.
+Die Drums können über die Tasten 1, 2 und 3 aktiviert werden. Pause mit “esc”. Alle UI-Elemente wie etwa Buttons und Slider werden per Maus bedient.
+
+## Midi-Controller
+Ein Midi-Controller kann auch als Eingabegerät verwendet werden, indem der Input über die Noten “D2”, “C2” und “G2” gesendet wird. Diese Noten wurden als Standard gewählt, da diese mit dem Schlagzeug “Roland TD-1K” getestet wurden (Snare, Floor Tom und Hi-Hat). Um zu erfahren, welche Noten ein Midi-Controller wann sendet, können im MidiInputScript.cs die Zeilen 28-37 auskommentiert werden, damit genauere Informationen auf der Konsole angezeigt werden. Um die Belegung nun zu ändern, müssen die entsprechenden Noten aus Zeile 39-47 ausgetauscht werden.
 
 ## Levels und Musik
 Das Projekt hat momentan nur ein spielbares Level. Es ist aber möglich, neue Levels und Musik zu verwenden. Dazu muss das Spawner-Objekt angepasst werden.
