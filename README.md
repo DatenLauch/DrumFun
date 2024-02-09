@@ -3,8 +3,8 @@
 Dieses Projekt entstand im Rahmen einer Studienleistung für das Modul “Audio- und Videotechnik” und "Mensch-Maschine Interaktion". Es handelt sich hierbei um ein Rhythmus-Spiel, welches den Umgang mit einem Schlagzeug spielerisch fördern soll.
 
 ## Installation
-Das Programm ist vorerst nur über einen Unity Editor ausführbar, welches über den Unity-Hub installiert werden kann: https://unity.com/de/download
-Das Projekt verwendet und empfiehlt einen Editor der Version 2021.3.22f1.
+Das Programm ist vorerst nur über einen Unity Editor ausführbar, welches über den Unity-Hub installiert werden kann: 
+https://unity.com/de/download Das Projekt verwendet und empfiehlt einen Editor der Version 2021.3.22f1.
    1. Download des Projekts über GitHub.
    2. Entpacken der Zip-Datei in einen Wunschordner.
    3. Der Ordner enthält jetzt Git-Dateien und das eigentliche Unity Projekt in einem Unterordner “MMI AVT Project” (ohne Bindestriche). Um nun das Unity Projekt zu öffnen, muss dieses über den Unity Hub ausgewählt und gestartet werden.
@@ -35,9 +35,11 @@ Die Musikdatei muss im .wav Format sein und kann per Drag-and-drop als Parameter
 __TextMesh Pro__ (Version 3.0.6)
   * Verwendet für bessere UI-Elemente.
   * Download über Unity Package Manager im Editor.
+    
 __DryWetMidi__ (Version 7.0.0)
   * Für den Umgang mit Midi-Dateien zum Generieren des Levels.
   * https://assetstore.unity.com/packages/tools/audio/drywetmidi-222171
+    
  __Minis__ (Version 1.0.10)
   * Um Midi-Controller als Input zu verwenden.
   * https://github.com/keijiro/Minis
